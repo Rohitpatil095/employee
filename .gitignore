@@ -1,3 +1,10 @@
 project.properties
 *.properties
 application.properties
+
+*.class
+*.log
+*.war
+*.zip
+*.tar.*
+*.jar

@@ -9,20 +9,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.office.portal.employee.businessservice.CreateEmployeeBusinessService;
+import com.office.portal.employee.businessservice.EmployeeBusinessService;
 import com.office.portal.employee.domain.dto.Dto;
 import com.office.portal.employee.infra.request.CreateEmployeeRequest;
+import com.office.portal.employee.infra.request.EmployeeByEmpRef;
+import com.office.portal.employee.infra.response.CreateApplyLeaveEmployeeResponse;
 import com.office.portal.employee.infra.response.CreateEmployeeResponse;
 import com.office.portal.employee.infra.response.GetAllLeaveDetailsList;
 
 @RestController
 public class EmployeeController {
 	
-	private CreateEmployeeBusinessService createEmployeeBusinessService;
+	private EmployeeBusinessService createEmployeeBusinessService;
 	private Dto dto;
 	
 	@Autowired
-	public EmployeeController(CreateEmployeeBusinessService svc,Dto dto) {
+	public EmployeeController(EmployeeBusinessService svc,Dto dto) {
 		super();
 		this.createEmployeeBusinessService = svc;
 		this.dto =dto;
@@ -48,7 +50,17 @@ public class EmployeeController {
 		return dto.getCreateEmployeeResponse();
 	}
 	
-
+	@PostMapping("/getEmployeeByEmployeeRef")
+	public CreateApplyLeaveEmployeeResponse getEmployeeByEmployeeRef(@RequestBody EmployeeByEmpRef empRef){
+		if(empRef.getEmpRef().isBlank())
+		{
+//			throw custome exception;
+		}
+		
+		createEmployeeBusinessService.getEmployeeByEmpRefrenceService(empRef.getEmpRef(), dto);
+		return dto.getCreateApplyLeaveEmployeeResponse();
+	}
+	
 	@GetMapping("/getleave")
 	public GetAllLeaveDetailsList getDetails()
 	{

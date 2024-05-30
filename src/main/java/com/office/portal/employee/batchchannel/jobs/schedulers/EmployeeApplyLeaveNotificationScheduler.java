@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.office.portal.employee.batchchannel.jobs.ApplyLeaveJobRunner;
 import com.office.portal.employee.batchchannel.jobs.LeaveNotificationStepFactory;
-import com.office.portal.employee.businessservice.CreateEmployeeBusinessService;
+import com.office.portal.employee.businessservice.EmployeeBusinessService;
 import com.office.portal.employee.businessservice.EmployeeApplyLeaveService;
 import com.office.portal.employee.domain.dto.Dto;
 import com.office.portal.employee.infra.impl.EmployeeApplyLeave;
@@ -24,7 +24,7 @@ public class EmployeeApplyLeaveNotificationScheduler {
 	private EmployeeApplyLeaveService employeeApplyLeaveService;
 
 	@Autowired 
-	private CreateEmployeeBusinessService createEmployeeBusinessService;
+	private EmployeeBusinessService createEmployeeBusinessService;
 	
 	@Autowired
 	private CreateEmployeeResponse createEmployeeResponse;
@@ -81,7 +81,7 @@ public class EmployeeApplyLeaveNotificationScheduler {
 //	}
 				
 //	@Scheduled(cron = "0 0 10 1/1 * ? *")
-	@Scheduled(cron = "*/10 * * * * *")
+	@Scheduled(cron = "0 0 10 * * *", zone = "US/Pacific")
 	public  void sendLeaveNotificationExecutor()
 	{
 		dto = employeeApplyLeaveService.GetEmployeeApplyLeaveDetailsForPendingLeaveStatus("Pending", dto);

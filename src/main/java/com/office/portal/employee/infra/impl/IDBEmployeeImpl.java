@@ -10,6 +10,7 @@ import com.office.portal.employee.domain.entity.Employee;
 import com.office.portal.employee.infra.Transformer;
 import com.office.portal.employee.infra.repository.EmployeeRepository;
 import com.office.portal.employee.infra.request.CreateEmployeeRequest;
+import com.office.portal.employee.infra.response.CreateApplyLeaveEmployeeResponse;
 import com.office.portal.employee.infra.response.CreateEmployeeResponse;
 
 @Service
@@ -32,7 +33,7 @@ public class IDBEmployeeImpl implements IDBEmployee{
 		Employee newEmployee= dto.getEmp();
 //		System.out.println("----------"+newEmployee.toString());
 		newEmployee =employeeRepo.save(newEmployee);
-		newEmployee.setEmpRef( newEmployee.getEmployee_Name().replace(" ", "-") + "_" +newEmployee.getEmployee_Id());
+		newEmployee.setEmpRef( newEmployee.getEmployeeName().replace(" ", "-") + "_" +newEmployee.getEmployeeId());
 		employeeRepo.save(newEmployee);
 		return dto;
 	}
@@ -46,9 +47,8 @@ public class IDBEmployeeImpl implements IDBEmployee{
 	public CreateEmployeeResponse getEmployeeByEmployeeId(Long empId) {
 		dto.setEmp(employeeRepo.findById(empId).get());
 //		System.out.println(dto.getEmp().toString());
-		if(dto.getEmp().getSupervisor_Email()!=null)
+		if(dto.getEmp().getSupervisorEmail()!=null)
 		{
-			System.out.println("transforming.......");
 			transformer.createEmployeeResponseTransformer(dto, true);
 		}
 //		else
@@ -75,6 +75,18 @@ public class IDBEmployeeImpl implements IDBEmployee{
 	public void deleteEmployee(Long empId) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public CreateApplyLeaveEmployeeResponse getEmployeeUsingEmpRef(String empRef, Dto dto) {
+
+		CreateApplyLeaveEmployeeResponse empResp= employeeRepo.getEmpUsingEmpRef(empRef);
+		if(empRef.isBlank())
+		{
+//			thorw exception
+		}
+		dto.setCreateApplyLeaveEmployeeResponse(empResp);
+		return dto.getCreateApplyLeaveEmployeeResponse();
 	}
 
 //	@Override

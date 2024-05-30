@@ -18,17 +18,17 @@ public class Transformer {
 		dto.setEmp(employee);
 		
 //		dto.getEmp().setEmployee_ref(dto.getCreateEmployeeRequest().getEmployee_Name()+);
-		dto.getEmp().setAadhar_No(dto.getCreateEmployeeRequest().getAadhar_No());
-		dto.getEmp().setBlood_Group(dto.getCreateEmployeeRequest().getBlood_Group());
+		dto.getEmp().setAadharNo(dto.getCreateEmployeeRequest().getAadhar_No());
+		dto.getEmp().setBloodGroup(dto.getCreateEmployeeRequest().getBlood_Group());
 		dto.getEmp().setContact(dto.getCreateEmployeeRequest().getContact());
-		dto.getEmp().setSec_Contact(dto.getCreateEmployeeRequest().getSec_Contact());
-		dto.getEmp().setEmployee_Address(dto.getCreateEmployeeRequest().getEmployee_Address());
-		dto.getEmp().setEmployee_Name(dto.getCreateEmployeeRequest().getEmployee_Name());
-		dto.getEmp().setPan_No(dto.getCreateEmployeeRequest().getPan_No());
-		dto.getEmp().setPassport_No(dto.getCreateEmployeeRequest().getPassport_No());
-		dto.getEmp().setSupervisor_Email(dto.getCreateEmployeeRequest().getSupervisor_Email());
-		dto.getEmp().setSupervisor_Name(dto.getCreateEmployeeRequest().getSupervisor_Name());
-		dto.getEmp().setSupervisor_EmpId(Long.parseLong(dto.getCreateEmployeeRequest().getSupervisor_EmpId()));
+		dto.getEmp().setSecContact(dto.getCreateEmployeeRequest().getSec_Contact());
+		dto.getEmp().setEmployeeAddress(dto.getCreateEmployeeRequest().getEmployee_Address());
+		dto.getEmp().setEmployeeName(dto.getCreateEmployeeRequest().getEmployee_Name());
+		dto.getEmp().setPanNo(dto.getCreateEmployeeRequest().getPan_No());
+		dto.getEmp().setPassportNo(dto.getCreateEmployeeRequest().getPassport_No());
+		dto.getEmp().setSupervisorEmail(dto.getCreateEmployeeRequest().getSupervisor_Email());
+		dto.getEmp().setSupervisorName(dto.getCreateEmployeeRequest().getSupervisor_Name());
+		dto.getEmp().setSupervisorEmpId(Long.parseLong(dto.getCreateEmployeeRequest().getSupervisor_EmpId()));
 		
 		return dto;
 		
@@ -48,10 +48,10 @@ public class Transformer {
 		dto.setEmp(emp);
 		
 		System.out.println("------ "+ emp.toString());
-		dto.getCreateEmployeeResponse().setEmployee_Name(emp.getEmployee_Name());
-		dto.getCreateEmployeeResponse().setEmployee_Id(emp.getEmployee_Id());
-		dto.getCreateEmployeeResponse().setSupervisor_Name(emp.getSupervisor_Name());
-		dto.getCreateEmployeeResponse().setSupervisor_Email(emp.getSupervisor_Email());
+		dto.getCreateEmployeeResponse().setEmployee_Name(emp.getEmployeeName());
+		dto.getCreateEmployeeResponse().setEmployee_Id(emp.getEmployeeId());
+		dto.getCreateEmployeeResponse().setSupervisor_Name(emp.getSupervisorName());
+		dto.getCreateEmployeeResponse().setSupervisor_Email(emp.getSupervisorEmail());
 		
 		return dto;
 		

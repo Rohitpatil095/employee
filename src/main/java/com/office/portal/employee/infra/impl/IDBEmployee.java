@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.office.portal.employee.domain.dto.Dto;
 import com.office.portal.employee.infra.request.CreateEmployeeRequest;
+import com.office.portal.employee.infra.response.CreateApplyLeaveEmployeeResponse;
 import com.office.portal.employee.infra.response.CreateEmployeeResponse;
 
 @Service
@@ -24,5 +25,8 @@ public interface IDBEmployee {
 	
 	//delete
 	public void deleteEmployee(Long empId);
+	
+	public CreateApplyLeaveEmployeeResponse getEmployeeUsingEmpRef(String empRef,Dto dto);
+	
 //	public List<int[]> employeeWatingForLeaveApproval();
 }

@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import com.office.portal.employee.batchchannel.jobs.schedulers.EmployeeApplyLeaveNotificationScheduler;
-import com.office.portal.employee.businessservice.CreateEmployeeBusinessService;
+import com.office.portal.employee.businessservice.EmployeeBusinessService;
 import com.office.portal.employee.businessservice.EmployeeApplyLeaveService;
 import com.office.portal.employee.constants.EmployeeConstants;
 import com.office.portal.employee.domain.dto.Dto;
@@ -48,7 +48,7 @@ public class LeaveNotificationStepFactory implements Tasklet {
 	private JavaMailSender mailSender;
 
 	@Autowired
-	private CreateEmployeeBusinessService createEmployeeBusinessService;
+	private EmployeeBusinessService createEmployeeBusinessService;
 
 	@Autowired
 	private CreateEmployeeResponse createEmployeeResponse;

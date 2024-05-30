@@ -10,6 +10,7 @@ import com.office.portal.employee.domain.entity.EmployeeLeave;
 import com.office.portal.employee.infra.request.CreateEmployeeRequest;
 import com.office.portal.employee.infra.request.EmployeeApplyLeaveRequest;
 import com.office.portal.employee.infra.request.ExternalServiceEmployeeApplyLeaveRequest;
+import com.office.portal.employee.infra.response.CreateApplyLeaveEmployeeResponse;
 import com.office.portal.employee.infra.response.CreateEmployeeResponse;
 import com.office.portal.employee.infra.response.fetchPendingStatusResponseList;
 import com.office.portal.employee.infra.response.EmployeeApplyLeaveResponse;
@@ -31,6 +32,7 @@ public class Dto {
 	private SetErrorGenericResponse setErrorCreateEmployeeResponse;
 	private GetAllLeaveDetails getAllLeaveDetails;
 	private FetchEmployeeApplyLeavePendingStatusResponseArray fetchEmployeeApplyLeavePendingStatusResponseArray;
+	@Autowired private CreateApplyLeaveEmployeeResponse createApplyLeaveEmployeeResponse;
 	@Autowired private LeavePendingStatusDetails leavePendingStatusDetails;
 	
 	public Employee getEmp() {
@@ -122,6 +124,13 @@ public class Dto {
 	public void setLeavePendingStatusDetails(LeavePendingStatusDetails leavePendingStatusDetails) {
 		this.leavePendingStatusDetails = leavePendingStatusDetails;
 	}
-	
+
+	public CreateApplyLeaveEmployeeResponse getCreateApplyLeaveEmployeeResponse() {
+		return createApplyLeaveEmployeeResponse;
+	}
+
+	public void setCreateApplyLeaveEmployeeResponse(CreateApplyLeaveEmployeeResponse createApplyLeaveEmployeeResponse) {
+		this.createApplyLeaveEmployeeResponse = createApplyLeaveEmployeeResponse;
+	}
 	
 }
